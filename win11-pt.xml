@@ -25,24 +25,24 @@
       <relaxed state="on"/>
       <vapic state="on"/>
       <spinlocks state="on" retries="8191"/>
-      <vendor_id state="on" value="1234567890ab"/>
       <vpindex state="on"/>
       <runtime state="on"/>
       <synic state="on"/>
       <stimer state="on"/>
+      <vendor_id state="on" value="1234567890ab"/>
       <frequencies state="on"/>
       <tlbflush state="on"/>
       <ipi state="on"/>
       <avic state="on"/>
     </hyperv>
     <kvm>
-        <hidden state="on"/>
+      <hidden state="on"/>
     </kvm>
     <vmport state="off"/>
     <smm state="on"/>
   </features>
   <cpu mode="host-passthrough" check="none" migratable="on">
-    <topology sockets="4" dies="1" clusters="1" cores="1" threads="1"/>
+    <topology sockets="1" dies="1" clusters="1" cores="4" threads="1"/>
   </cpu>
   <clock offset="localtime">
     <timer name="rtc" tickpolicy="catchup"/>
@@ -208,6 +208,13 @@
         <address domain="0x0000" bus="0x03" slot="0x00" function="0x1"/>
       </source>
       <address type="pci" domain="0x0000" bus="0x07" slot="0x00" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="usb" managed="yes">
+      <source>
+        <vendor id="0x046d"/>
+        <product id="0xc52b"/>
+      </source>
+      <address type="usb" bus="0" port="4"/>
     </hostdev>
     <redirdev bus="usb" type="spicevmc">
       <address type="usb" bus="0" port="2"/>
